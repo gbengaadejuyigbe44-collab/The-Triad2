@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="The Triad"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#f4f1ee"/>
+<meta name="description" content="The Triad — Clinical Decision Support. HTN · Hypotension · Diabetes · Sepsis · Paediatrics · Renal · Drug Reference. ESC/ESH 2023 · ADA 2024 · KDIGO 2024 · SSC."/>
+<title>The Triad — Clinical Decision Support</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3CradialGradient%20id=%22bg%22%20cx=%2250%25%22%20cy=%2250%25%22%20r=%2250%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset=%220%25%22%20stop-color=%22%231e293b%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset=%22100%25%22%20stop-color=%22%230f172a%22/%3E%0A%20%20%20%20%3C/radialGradient%3E%0A%20%20%20%20%3Cfilter%20id=%22glow%22%20x=%22-30%25%22%20y=%22-30%25%22%20width=%22160%25%22%20height=%22160%25%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation=%221%22%20result=%22blur%22/%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%3CfeMergeNode%20in=%22blur%22/%3E%3CfeMergeNode%20in=%22SourceGraphic%22/%3E%3C/feMerge%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%0A%20%20%3C%21--%20Background%20circle%20--%3E%0A%20%20%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%2232%22%20fill=%22url%28%23bg%29%22/%3E%0A%0A%20%20%3C%21--%20Subtle%20outer%20ring%20--%3E%0A%20%20%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%2229%22%20fill=%22none%22%20stroke=%22%230ea5e9%22%20stroke-width=%220.6%22%20opacity=%220.35%22/%3E%0A%0A%20%20%3C%21--%20Triangle%20edges%20--%3E%0A%20%20%3C%21--%20Vertices:%20Top=32,8%20%20BottomRight=54,44%20%20BottomLeft=10,44%20--%3E%0A%20%20%3Cline%20x1=%2232%22%20y1=%228%22%20%20x2=%2254%22%20y2=%2244%22%20stroke=%22%230ea5e9%22%20stroke-width=%222.2%22%20stroke-linecap=%22round%22/%3E%0A%20%20%3Cline%20x1=%2254%22%20y1=%2244%22%20x2=%2210%22%20y2=%2244%22%20stroke=%22%23a855f7%22%20stroke-width=%222.2%22%20stroke-linecap=%22round%22/%3E%0A%20%20%3Cline%20x1=%2210%22%20y1=%2244%22%20x2=%2232%22%20y2=%228%22%20%20stroke=%22%23ef4444%22%20stroke-width=%222.2%22%20stroke-linecap=%22round%22/%3E%0A%0A%20%20%3C%21--%20Vertex%20dots%20with%20glow%20--%3E%0A%20%20%3Ccircle%20cx=%2232%22%20cy=%228%22%20%20r=%223.8%22%20fill=%22%230ea5e9%22%20filter=%22url%28%23glow%29%22/%3E%0A%20%20%3Ccircle%20cx=%2254%22%20cy=%2244%22%20r=%223.8%22%20fill=%22%23a855f7%22%20filter=%22url%28%23glow%29%22/%3E%0A%20%20%3Ccircle%20cx=%2210%22%20cy=%2244%22%20r=%223.8%22%20fill=%22%23ef4444%22%20filter=%22url%28%23glow%29%22/%3E%0A%0A%20%20%3C%21--%20ECG%20pulse%20line%20through%20the%20triangle%20interior%20--%3E%0A%20%20%3Cpolyline%0A%20%20%20%20points=%2215,29%2019,29%2022,19%2025,37%2028,23%2031,29%2035,29%2038,15%2041,36%2044,29%2048,29%22%0A%20%20%20%20fill=%22none%22%20stroke=%22%23f0f9ff%22%20stroke-width=%221.8%22%0A%20%20%20%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%0A%20%20%20%20opacity=%220.9%22%20filter=%22url%28%23glow%29%22/%3E%0A%0A%20%20%3C%21--%20Centre%20pulse%20dot%20--%3E%0A%20%20%3Ccircle%20cx=%2232%22%20cy=%2229%22%20r=%222.2%22%20fill=%22white%22%20opacity=%220.9%22/%3E%0A%3C/svg%3E"/>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEH0lEQVR42tVXW08TQRj1D7Dqk+KLGvBFVKoiYJCCgOIDXiCUkBgNBElU1IhGI/rAg4IakcRgUBQtikQ0mqio0VQ0ARXxhiZeiLGpYIQWut1y6XJr+zk7uzvstrvdSo2JTU6mu/Ptd86c+XZmZ9q0/+k3fdZCHUIJQhOCGYFFAKE1C/e5ft3fJs5FaBXICKjN5UCVPsStb58Qn/s3RmwihJWvgTrWzLdn3gPVYJvEuS+kz0eIaUqOoIfyZMQ+iant5+QC0HWgeC7fn5AX40T5lUqJMCoMO+UCKtr8YrAQlENyrzjokVMHb2JLlcg50Kmp0JJTACf3VAB1zQph9b2KcXhaUK6gnBDmnB95APL2BD04kAAOSSsysACMilfqIuRO6NQEmETr1MhnIIjk5qRknqCmk3eBEzE7SlmEPKdJ7VULSM7hc2ISERARzpNREQnEhafdLlhvKAxGRK6vgFYtARFzFhHyT0iILHnVRyj/OAjMqBd+9A0EI6DVf+41Rv+z/AQw33+AIz0dT4UsObK+wz6OBdhcHtUcPhw6UUCJWCxqDybPjQZmmCf4VlWjGGNzuXE/PeIFKiZLtSAl1yWigCYtB6wXL+PkHJpfdkCsfiNYrAzk7zhEYhwjHgQ+JuySJRgHmkQB5kAObFmwDBhmmAiwWB1gev4W/+8bGsMxuw8cxde9QxO43fSEBmrdbi0HzKIANpAA29EynrzXDnZkcz+aii5UaAwasWvcC1du3IMX77/gmMct73Bb0+kCqq5bSwArCvCzJy5pEx4dR4KBkj4qKoYehsVW06wbRic84PZ4YcztFez3wIacQhz7pm8cLINuPCU1V2/LF6XUyddU1YHw+THQ9qETHPQQMD12oO/ex/c7vlrIVNidQ+B0DgI96ILOLiucOltHasHG8gX5a9gD23Yd1nTArFSE1bp48t6fjo7D92ob7hABxsb7EBmV6L9PCOQOhJkNaIEqqlUrQrP8LfCpAbtA3peSQu6t3biVCIhZlaFYM71OFvd39I/zK2R9j5oDTfJ1QKLuVmwCGf2+hStkBHh0I+qLza0Hz3CxLt1bNblRHbmj5ECJbCWUBtACec/qFD+CxrsmuCApLCUsWKzn8xm7yXatsM7oFPeCpysTyeizI3UBibTAVTxxwdilvBdId8ODUbHgSEvD5N3JKSGRExG1ZoivtEPRficYlp9Q3g2533FU6QwiF2HKeAj1WQOhwzAMjYYRgvz486D4QfJkpZ6VCmjZcA+uZ7OhwcBDKqAsvZ1VFIBIS0VyR9oauJn1FYxIfV2mfUrgnjUaBuBKJo3FSESUqn4XIvKCsiVxo/p50Vqf2QH3fN/46EgD5MVVjyLygj8+FygeTLhWCkmfirC8kE9Gaq+ZhiOmkM+KamdDDYR+NvwXp+Pf/MAHsz/nHWEAAAAASUVORK5CYII="/>
+<link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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"/>
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app/css/styles.css"/>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<!-- Back to Top -->
+<button id="back-to-top" title="Back to top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+<button id="emergency-btn" title="Emergency Mode — hold and drag to move"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
+<button id="print-fab" onclick="printCurrent()" title="Print / Save as PDF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></button>
+<!-- ══ DISCLAIMER ══════════════════════════════════════════════ -->
+<div id="disc-overlay">
+  <div class="disc-box">
+    <div class="disc-hdr">
+      <h2><span>⚕️</span>Clinical Professional Disclaimer</h2>
+      <p>Please read carefully before proceeding</p>
+    </div>
+    <div class="disc-body">
+      <div class="disc-warn">⚠ <strong>RESTRICTED USE —</strong> For use by <strong>licensed physicians, nurses, pharmacists, and qualified clinical practitioners only.</strong></div>
+      <p style="font-size:13px;color:#374151;line-height:1.7;margin-bottom:10px">This application is a <strong>clinical decision-support reference</strong> based on:</p>
+      <ul><li>ESC/ESH 2023 Hypertension Guidelines</li><li>ADA Standards of Medical Care in Diabetes (2024)</li><li>ACC/AHA 2013 Pooled Cohort Equations</li><li>ESC/ESH Guidelines on Hypotension Management</li></ul>
+      <div class="disc-note" style="margin-top:12px">This application <strong>does not</strong> constitute medical advice, does not replace clinical judgment, and has <strong>not</strong> been certified as a medical device. All patient management decisions must be made by a qualified healthcare professional.</div>
+      <div class="disc-small">By continuing, you confirm you are a licensed or supervised healthcare professional using this tool for clinical reference purposes only.</div>
+      <button class="btn-go" onclick="acceptDisc()">✅ I am a Healthcare Professional — Continue</button>
+      <button class="btn-no" onclick="declineDisc()">I am not a Healthcare Professional</button>
+    </div>
+  </div>
+</div>
+
+<div id="disc-declined">
+  <div style="font-size:52px;margin-bottom:16px">🏥</div>
+  <h2>This tool is for Healthcare Professionals</h2>
+  <p>This clinical decision-support application is designed for licensed physicians, nurses, pharmacists, and qualified clinical practitioners. If you have questions about your health, please consult your doctor.</p>
+  <div class="dec-box">📞 Emergency: Call <strong>911</strong> or your local emergency number<br>🏥 Or visit your nearest Emergency Department</div>
+</div>
+
+<!-- ══ ABOUT MODAL ══════════════════════════════════════════════ -->
+<div id="about-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:9990;align-items:center;justify-content:center;padding:12px;backdrop-filter:blur(4px)">
+  <div style="background:#fff;border-radius:16px;max-width:480px;width:100%;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 25px 60px rgba(0,0,0,0.5);overflow:hidden;">
+
+    <!-- Fixed header -->
+    <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:18px 22px;flex-shrink:0;border-radius:16px 16px 0 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="36" height="36"><defs><radialGradient id="bga2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></radialGradient><filter id="gla2"><feGaussianBlur stdDeviation="0.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bga2)"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88"/></svg>
+          <div>
+            <div style="color:#f0f9ff;font-size:17px;font-weight:800;">The Triad <span style="font-size:11px;color:#64748b;font-weight:500;">v3.1</span></div>
+            <div style="color:#7dd3fc;font-size:10px;font-weight:600;margin-top:2px;">HTN · Hypotension · DM · Sepsis · Paediatrics · Renal</div>
+          </div>
+        </div>
+        <button onclick="closeAbout()" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:16px;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✕</button>
+      </div>
+    </div>
+
+    <!-- Scrollable body -->
+    <div style="overflow-y:auto;flex:1;padding:20px 22px;-webkit-overflow-scrolling:touch;">
+
+      <div style="padding:13px 15px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;font-size:13px;color:#374151;line-height:1.7;margin-bottom:16px;">
+        A pocket-sized clinical reference for healthcare professionals — covering the most interconnected conditions at the bedside: Hypertension, Hypotension, Diabetes, Sepsis, Paediatrics, Renal Medicine, and a comprehensive Drug Reference. Built on current international guidelines.<br><br>
+        <strong>No app store. Just tap the link and use — on any device.</strong>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">What's Inside</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#f0f9ff;border-radius:8px;line-height:1.5;"><span><strong>Hypertension</strong> — 13 tabs: classification, treatment algorithm, CVA protocol, ASCVD calculator, BP tracker, med checker, special populations, ANC Assessment</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#faf5ff;border-radius:8px;line-height:1.5;"><span><strong>Hypotension</strong> — 7 tabs: shock protocol, vasopressor guide, orthostatic management, fluid strategy, prevention</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#fef2f2;border-radius:8px;line-height:1.5;"><span><strong>Diabetes</strong> — 11 tabs: T1DM, T2DM, glycaemic targets, insulin guide, insulin chart, BG tracker, complications, glycaemic emergencies (DKA, HHS, hypoglycaemia)</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#f8fafc;border-radius:8px;line-height:1.5;"><span><strong>Combined View</strong> — Shared drugs, aligned targets, dual-benefit lifestyle table</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#f0fdf4;border-radius:8px;line-height:1.5;"><span><strong>Drug Reference</strong> — 16 tabs: antihypertensives, vasopressors, antidiabetics, insulin calculator, emergency meds, IV fluids, interactions, drugs in pregnancy, psychiatry, antibiotics, electrolytes, analgesics, resp & GI, cardio & endocrine, neuro & MSK, antimalarials</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#fff7ed;border-radius:8px;line-height:1.5;"><span><strong>Sepsis</strong> — 6 tabs: Overview, qSOFA &amp; SOFA, Hour-1 Bundle, Empiric Antibiotics, Severity Guide, Investigations</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#ecfeff;border-radius:8px;line-height:1.5;"><span><strong>Paediatrics</strong> — 10 tabs: Drug doses, Normal values, DKA Protocol (BSPED 2020), Neonatal Resus (NLS 2021), Fluid Guide, ABCDE Assessment, Malaria & Fever, Convulsions, Malnutrition, Sickle Cell</span></div>
+          <div style="display:flex;gap:10px;font-size:12px;padding:8px 11px;background:#faf5ff;border-radius:8px;line-height:1.5;"><span><strong>Renal</strong> — 6 tabs: eGFR Calculator (CKD-EPI 2021), CKD Staging (KDIGO 2024), AKI Protocol, Complications, Dialysis Indications, Drug Dose Adjustment</span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Clinical Guidelines</div>
+        <div style="font-size:12px;color:#374151;line-height:2;background:#f8fafc;border-radius:10px;padding:12px 14px;">
+          ◆ ESC/ESH 2023 Hypertension Guidelines<br>
+          ◆ ADA Standards of Medical Care in Diabetes 2024<br>
+          ◆ Surviving Sepsis Campaign (SSC) Guidelines 2021<br>
+          ◆ BSPED Paediatric DKA Guideline 2020<br>
+          ◆ KDIGO CKD Guideline 2024<br>
+          ◆ Resuscitation Council UK NLS 2021<br>
+          ◆ AAP Pediatric Hypertension Guidelines 2017<br>
+          ◆ NHLBI DASH Diet &amp; ACSM Exercise Guidelines<br>
+          ◆ ACC/AHA Pooled Cohort Equations 2013<br>
+          ◆ BNF for Children (BNFC) 2023–2024
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;padding:13px 15px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Created By</div>
+        <div style="font-size:15px;font-weight:800;color:#1e293b;">Gbenga Adejuyigbe</div>
+        <div style="font-size:13px;color:#0ea5e9;font-weight:600;">RN, BNSc</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:3px;">Version 3.1 · 2026 · Built from scratch — no frameworks, no app store</div>
+      </div>
+
+      <div style="padding:11px 13px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;font-size:11px;color:#7f1d1d;line-height:1.6;margin-bottom:16px;">
+        ⚠ <strong>Disclaimer:</strong> The Triad is for licensed or supervised healthcare professionals only. It does not constitute medical advice, does not replace clinical judgment, and has not been certified as a medical device. Always verify against current local guidelines.
+      </div>
+
+      <button onclick="closeAbout();setTimeout(function(){if(window.startTour){localStorage.removeItem('triad_tour_done_v4');window.startTour(true);}},200);" style="width:100%;padding:12px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;margin-bottom:8px;">Restart App Tour</button>
+      <button onclick="closeAbout()" style="width:100%;padding:12px;background:linear-gradient(135deg,#0ea5e9,#0369a1);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;margin-bottom:4px;">Close</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ WELCOME SCREEN ═══════════════════════════════════════════ -->
+<div id="welcome-screen">
+  <div id="welcome-box">
+    <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:22px 26px;border-radius:16px 16px 0 0">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+        <div style="width:48px;height:48px;flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><defs><radialGradient id="bgb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></radialGradient><filter id="glb"><feGaussianBlur stdDeviation="0.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bgb)"/><circle cx="28" cy="28" r="25.5" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9" filter="url(#glb)"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7" filter="url(#glb)"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444" filter="url(#glb)"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" filter="url(#glb)"/><circle cx="28" cy="24" r="2" fill="white" opacity="0.85"/></svg></div>
+        <div>
+          <div style="color:#7dd3fc;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px">Welcome to</div>
+          <div style="color:#f0f9ff;font-size:22px;font-weight:800;line-height:1.1">The Triad <span style="font-size:11px;color:#475569;font-weight:500">v3.1</span></div>
+          <div style="color:#7dd3fc;font-size:12px;margin-top:2px">HTN · Hypotension · Diabetes · Sepsis · Paediatrics · Renal</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:22px 26px">
+      <p style="font-size:14px;color:#1e293b;line-height:1.8;margin:0 0 16px">
+        A clinical reference tool built for the <strong>entire healthcare team</strong> — nurses, interns, physicians, and consultants alike.
+      </p>
+      <p style="font-size:13px;color:#475569;line-height:1.8;margin:0 0 16px">
+        The Triad does not replace clinical judgment. It puts the right information at your fingertips — faster — so you can focus on what matters most: <strong>your patient.</strong>
+      </p>
+      <div style="padding:12px 14px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;font-size:12px;color:#0369a1;line-height:1.7;margin-bottom:18px">
+        ⚕️ <strong>For licensed or supervised healthcare professionals only.</strong> Always apply clinical judgment and defer to your institution's protocols.
+      </div>
+      <button onclick="dismissWelcome()" style="width:100%;padding:12px;background:linear-gradient(135deg,#0ea5e9,#0369a1);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer">Get Started →</button>
+      <div style="text-align:center;margin-top:12px;font-size:11px;color:#94a3b8">© 2026 Gbenga Adejuyigbe, RN, BNSc</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ APP ══════════════════════════════════════════════════════ -->
+
+
+<!-- ══ WELCOME SCREEN ═══════════════════════════════════════════ -->
+<div id="welcome-screen">
+  <div id="welcome-box">
+    <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:22px 26px;border-radius:16px 16px 0 0">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+        <div style="width:48px;height:48px;flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><defs><radialGradient id="bgc" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></radialGradient><filter id="glc"><feGaussianBlur stdDeviation="0.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bgc)"/><circle cx="28" cy="28" r="25.5" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9" filter="url(#glc)"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7" filter="url(#glc)"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444" filter="url(#glc)"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" filter="url(#glc)"/><circle cx="28" cy="24" r="2" fill="white" opacity="0.85"/></svg></div>
+        <div>
+          <div style="color:#7dd3fc;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px">Welcome to</div>
+          <div style="color:#f0f9ff;font-size:22px;font-weight:800;line-height:1.1">The Triad <span style="font-size:11px;color:#475569;font-weight:500">v3.1</span></div>
+          <div style="color:#7dd3fc;font-size:12px;margin-top:2px">HTN · Hypotension · Diabetes · Sepsis · Paediatrics · Renal</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:22px 26px">
+      <p style="font-size:14px;color:#1e293b;line-height:1.8;margin:0 0 16px">
+        A clinical reference tool built for the <strong>entire healthcare team</strong> — nurses, interns, physicians, and consultants alike.
+      </p>
+      <p style="font-size:13px;color:#475569;line-height:1.8;margin:0 0 16px">
+        The Triad does not replace clinical judgment. It puts the right information at your fingertips — faster — so you can focus on what matters most: <strong>your patient.</strong>
+      </p>
+      <div style="padding:12px 14px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;font-size:12px;color:#0369a1;line-height:1.7;margin-bottom:18px">
+        ⚕️ <strong>For licensed or supervised healthcare professionals only.</strong> Always apply clinical judgment and defer to your institution's protocols.
+      </div>
+      <button onclick="dismissWelcome()" style="width:100%;padding:12px;background:linear-gradient(135deg,#0ea5e9,#0369a1);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer">Get Started →</button>
+      <div style="text-align:center;margin-top:12px;font-size:11px;color:#94a3b8">© 2026 Gbenga Adejuyigbe, RN, BNSc</div>
+    </div>
+  </div>
+</div>
+
+<div id="app-wrapper"><!-- ══ APP ══════════════════════════════════════════════════════ -->
+<div id="app" style="display:none">
+
+<div id="app-header">
+  <div id="header-status-bar">
+    <div class="hsb-left">
+      <span class="hsb-live"><span class="hsb-live-dot"></span>LIVE</span>
+    </div>
+    <div class="hsb-right">
+      <span id="header-clock">--:--:--</span>
+    </div>
+  </div>
+  <div id="header-top">
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" role="img" aria-label="The Triad Logo"><defs><radialGradient id="bg-h" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0a0f1e"/></radialGradient><filter id="glow-h"><feGaussianBlur stdDeviation="0.8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bg-h)"/><circle cx="28" cy="28" r="25.5" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9" filter="url(#glow-h)"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7" filter="url(#glow-h)"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444" filter="url(#glow-h)"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" filter="url(#glow-h)"/><circle cx="28" cy="24" r="2" fill="white" opacity="0.85"/></svg>
+      <div class="header-logo-text">
+        <span class="header-logo-name">The Triad</span>
+        <span class="header-logo-sub">Clinical Decision Support</span>
+      </div>
+    </div>
+    <div class="header-actions"><a id="tracker-link" href="/auth" title="Clinician Tracker — Log in to patient dashboard" class="tracker-nav-link">📊 <span class="tracker-nav-label">Tracker</span></a>
+      <button class="header-icon-btn" onclick="navToHome()" title="Home" id="home-nav-btn" aria-label="Go to home dashboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+      <button class="header-icon-btn" id="search-toggle-btn" onclick="toggleSearch()" title="Search" aria-label="Toggle search" aria-expanded="false" aria-controls="search-bar-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <button class="header-icon-btn" id="dark-toggle" onclick="toggleDark()" title="Toggle dark mode" aria-label="Toggle dark mode" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="header-icon-btn" onclick="openSettings()" title="Settings" id="settings-btn" aria-label="Open settings" aria-haspopup="dialog"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+    </div>
+  </div>
+  <!-- mod-nav-wrap hidden — module selection on Home Dashboard -->
+  <div id="mod-nav-wrap" style="display:none"></div>
+</div>
+
+<!-- HOME DASHBOARD (Level 1) -->
+<div id="home-dashboard" style="display:none">
+
+  <!-- Hero tagline -->
+  <div class="home-hero">
+    <div class="home-hero-label">Evidence-Based · Open Access · Guideline-Driven</div>
+    <div class="home-hero-title">Clinical decisions,<br><em>at the bedside.</em></div>
+    <div class="home-hero-sub">A <strong>free, open-access clinical reference</strong> for any healthcare professional — works offline on any device, anywhere in the world.</div>
+  </div>
+
+  <!-- Home search bar -->
+  <div class="home-search-wrap">
+    <span class="home-search-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+    <input
+      class="home-search-box"
+      id="home-search-input"
+      type="search"
+      placeholder="Search drugs, conditions, protocols, abbreviations..."
+      autocomplete="off"
+      autocorrect="off"
+      spellcheck="false"
+      oninput="onHomeSearch(this.value)"
+      onfocus="onHomeSearchFocus()"
+    />
+    <div class="home-search-hint">Search across 500+ drugs · all modules · emergency protocols</div>
+  </div>
+
+  <!-- Section label -->
+  <div class="home-section-label">Clinical Modules</div>
+
+  <!-- Module cards grid -->
+  <div id="mod-cards-container"></div>
+
+  <!-- Feature pills -->
+  <div class="home-pills">
+    <span class="home-pill hi">✓ Works Offline</span>
+    <span class="home-pill hi">✓ Any Phone</span>
+    <span class="home-pill hi">✓ Always Free</span>
+    <span class="home-pill">No Download</span>
+    <span class="home-pill">No Login</span>
+    <span class="home-pill">ESC/ESH 2023</span>
+    <span class="home-pill">ADA 2024</span>
+    <span class="home-pill">SSC 2021</span>
+  </div>
+
+  <!-- CTA banner -->
+  <div class="home-cta">
+    <div>
+      <div class="home-cta-label">Open now · Free forever</div>
+      <div class="home-cta-url">the-triad2.vercel.app</div>
+      <div class="home-cta-sub">Open in any browser · No app store needed</div>
+    </div>
+    <button onclick="triggerPWAInstall()" class="home-cta-btn" id="pwa-cta-btn"><br>Install as<br>PWA App</button>
+  </div>
+
+  <!-- Utility row -->
+  <div class="home-util-row">
+    <button class="home-util-btn" onclick="openAbout()">About &amp; Tour</button>
+    <button class="home-util-btn" onclick="printCurrent()">Print</button>
+  </div>
+</div>
+
+<!-- TAB GRID VIEW (Level 2) -->
+<div id="tab-grid-view" style="display:none">
+  <div id="tab-grid-header">
+    <button class="tgv-back" onclick="navToHome()" title="Back to Home">&#8592;</button>
+    <div id="tgv-mod-badge" class="tgv-mod-badge" style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"></div>
+    <div style="flex:1;min-width:0">
+      <div id="tgv-mod-label" class="tgv-mod-label"></div>
+      <div id="tgv-mod-sub" class="tgv-mod-sub"></div>
+    </div>
+  </div>
+  <div id="tab-grid-content" style="max-width:720px;margin:0 auto;padding:14px">
+    <div class="tab-cards-grid" id="tab-cards-container"></div>
+  </div>
+</div>
+
+<!-- DRUG GROUPS VIEW (Level 2 — Drug Reference landing) -->
+<div id="drug-groups-view" style="display:none">
+  <div id="tab-grid-header">
+    <button class="tgv-back" onclick="navToHome()" title="Back to Home">&#8592;</button>
+    <div id="dgv-mod-badge" class="tgv-mod-badge" style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(34,197,94,0.12);"></div>
+    <div style="flex:1;min-width:0">
+      <div class="tgv-mod-label">Drug Reference</div>
+      <div class="tgv-mod-sub">Select a category to explore</div>
+    </div>
+  </div>
+  <div style="max-width:720px;margin:0 auto;padding:14px">
+    <div id="drug-group-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
+  </div>
+</div>
+
+<!-- DRUG GROUP TABS VIEW (Level 2b — tabs within a drug group) -->
+<div id="drug-group-tabs-view" style="display:none">
+  <div id="tab-grid-header">
+    <button class="tgv-back" onclick="navToDrugGroups()" title="Back to Drug Groups">&#8592;</button>
+    <div id="dgtv-badge" class="tgv-mod-badge" style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"></div>
+    <div style="flex:1;min-width:0">
+      <div id="dgtv-label" class="tgv-mod-label"></div>
+      <div id="dgtv-sub" class="tgv-mod-sub"></div>
+    </div>
+  </div>
+  <div style="max-width:720px;margin:0 auto;padding:14px">
+    <div class="tab-cards-grid" id="drug-group-tab-cards"></div>
+  </div>
+</div>
+
+<!-- CONTENT BACK BAR (Level 3) -->
+<div id="content-back-bar">
+  <button class="cbb-back" onclick="navBackFromContent()" title="Back to tabs">&#8592;</button>
+  <div class="cbb-breadcrumb">
+    <span class="cbb-mod-dot" id="cbb-mod-dot" style="background:#38bdf8;color:#38bdf8"></span>
+    <span class="cbb-mod" id="cbb-mod-name" onclick="navBackFromContent()" style="cursor:pointer"></span>
+    <span class="cbb-sep">&#8250;</span>
+    <span class="cbb-tab" id="cbb-tab-name"></span>
+  </div>
+</div>
+
+<div id="tab-nav"></div>
+<div id="search-bar-wrap" style="position:relative"><input id="search-input" placeholder="Search drugs, conditions, abbreviations..." oninput="doSearchDebounced(this.value)" onblur="setTimeout(function(){var s=document.getElementById('search-suggestions');if(s)s.style.display='none';},200)" aria-label="Search clinical content" aria-autocomplete="list" aria-controls="search-results" autocomplete="off"><div id="search-suggestions" style="display:none;position:absolute;top:calc(100% + 2px);left:0;right:0;z-index:500;background:#0f172a;border:1.5px solid #334155;border-radius:10px;max-height:280px;overflow-y:auto;box-shadow:0 8px 28px rgba(0,0,0,0.4)"></div><div id="search-results" role="listbox" aria-live="polite" aria-atomic="false"></div></div>
+<div id="print-header">
+  <!-- Top row: logo + title + author -->
+  <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:10px">
+    <div style="width:48px;height:48px;flex-shrink:0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><defs><radialGradient id="bge" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></radialGradient><filter id="gle"><feGaussianBlur stdDeviation="0.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bge)"/><circle cx="28" cy="28" r="25.5" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9" filter="url(#gle)"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7" filter="url(#gle)"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444" filter="url(#gle)"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" filter="url(#gle)"/><circle cx="28" cy="24" r="2" fill="white" opacity="0.85"/></svg>
+    </div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:20px;font-weight:900;color:#0f172a;letter-spacing:-0.4px;line-height:1.1">The Triad</div>
+      <div style="font-size:11.5px;font-weight:600;color:#0ea5e9;letter-spacing:0.6px;text-transform:uppercase;margin-top:1px">Clinical Decision Support Tool</div>
+      <div style="font-size:11px;color:#64748b;margin-top:3px" id="print-title">Hypertension · Hypotension &amp; Shock · Diabetes</div>
+    </div>
+
+  </div>
+
+  <!-- Divider -->
+  <div style="height:2px;background:linear-gradient(90deg,#0ea5e9,#a855f7,#ef4444);border-radius:2px;margin-bottom:8px"></div>
+
+  <!-- Meta row: version · guidelines · date -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <div style="font-size:10.5px;color:#64748b">
+      <span style="font-weight:700;color:#0f172a">v3.1</span>
+      &nbsp;·&nbsp; ESC/ESH 2023 &nbsp;·&nbsp; ADA 2024 &nbsp;·&nbsp; KDIGO 2024 &nbsp;·&nbsp; SSC 2021 &nbsp;·&nbsp; ISSHP 2018
+    </div>
+    <div style="font-size:10.5px;color:#64748b" id="print-date"></div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div style="margin-top:7px;padding:6px 10px;background:#fef9f0;border:1px solid #fed7aa;border-radius:6px;font-size:10px;color:#92400e;line-height:1.5">
+    ⚠️ <strong>Clinical Reference Only.</strong> Content is based on international guidelines (ESC/ESH 2023, ADA 2024, SSC 2021). This document does not replace clinical judgment, institutional protocols, or senior review. For use by licensed healthcare professionals only. Drug doses must be verified against current formulary before administration.
+    &nbsp;·&nbsp; <strong>the-triad2.vercel.app</strong>
+  </div>
+</div>
+<div id="main-content"></div>
+
+<div id="app-footer">
+  <div class="footer-version">⚕️ &nbsp;The Triad &nbsp;·&nbsp; v3.1</div>
+  <div style="color:#475569;font-size:11px;margin-bottom:4px">For <strong style="color:#64748b">licensed healthcare professionals</strong> only · Clinical reference · Not a substitute for clinical judgment</div>
+  <div class="footer-divider"></div>
+  <div class="footer-sources">ESC/ESH 2023 · ADA 2024 · KDIGO 2024 · SSC 2021 · ISSHP 2018 · ACC/AHA PCE 2013 · NICE</div>
+</div>
+
+</div><!-- /app -->
+</div><!-- /app-wrapper -->
+
+<!-- Result print zone — lives outside app-wrapper so hiding app-wrapper doesn't affect it -->
+<div id="result-print-zone" style="display:none;padding:20px"></div>
+
+<!-- ══ SETTINGS PANEL ════════════════════════════════════════════ -->
+<div id="settings-overlay" style="display:none;position:fixed;inset:0;z-index:9980;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;padding:0;">
+  <div id="settings-panel">
+    <div id="settings-hdr">
+      <div>
+        <div id="settings-title">Settings</div>
+        <div id="settings-sub">Personalise your experience</div>
+      </div>
+      <button id="settings-close" onclick="closeSettings()" title="Close">✕</button>
+    </div>
+    <div id="settings-body">
+      <div class="stg-section-label">Appearance</div>
+      <div class="stg-row">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">🌙</div>
+          <div><div class="stg-row-name">Dark Mode</div><div class="stg-row-sub">Easy on the eyes in low light</div></div>
+        </div>
+        <button class="stg-toggle" id="stg-dark-toggle" onclick="stgToggleDark()" aria-label="Toggle dark mode"><span class="stg-toggle-knob"></span></button>
+      </div>
+      <div class="stg-row stg-col">
+        <div class="stg-row-left" style="margin-bottom:10px">
+          <div class="stg-row-icon">🔤</div>
+          <div><div class="stg-row-name">Font Style</div><div class="stg-row-sub">Changes text throughout the app</div></div>
+        </div>
+        <div class="stg-font-grid" id="stg-font-grid"></div>
+      </div>
+      <div class="stg-row stg-col">
+        <div class="stg-row-left" style="margin-bottom:10px">
+          <div class="stg-row-icon">🔡</div>
+          <div><div class="stg-row-name">Text Size</div><div class="stg-row-sub" id="stg-size-label">Medium (100%)</div></div>
+        </div>
+        <div class="stg-slider-wrap">
+          <span class="stg-slider-cap">A</span>
+          <input type="range" class="stg-slider" id="stg-size-slider" min="85" max="120" step="5" value="100" oninput="stgSetSize(this.value)">
+          <span class="stg-slider-cap" style="font-size:18px">A</span>
+        </div>
+      </div>
+      <div class="stg-section-label">Clinical Preferences</div>
+      <div class="stg-row">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">🩸</div>
+          <div><div class="stg-row-name">Glucose Units</div><div class="stg-row-sub" id="stg-gluc-sub">Currently: mmol/L</div></div>
+        </div>
+        <div class="stg-seg" id="stg-gluc-seg">
+          <button class="stg-seg-btn active" onclick="stgSetGluc('mmol')" id="stg-gluc-mmol">mmol/L</button>
+          <button class="stg-seg-btn" onclick="stgSetGluc('mgdl')" id="stg-gluc-mgdl">mg/dL</button>
+        </div>
+      </div>
+      <div class="stg-section-label">Display</div>
+      <div class="stg-row">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">📐</div>
+          <div><div class="stg-row-name">Compact Mode</div><div class="stg-row-sub">Tighter spacing — more content visible</div></div>
+        </div>
+        <button class="stg-toggle" id="stg-compact-toggle" onclick="stgToggleCompact()" aria-label="Toggle compact mode"><span class="stg-toggle-knob"></span></button>
+      </div>
+      <div class="stg-row">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">✨</div>
+          <div><div class="stg-row-name">Reduce Motion</div><div class="stg-row-sub">Turns off animations and transitions</div></div>
+        </div>
+        <button class="stg-toggle" id="stg-motion-toggle" onclick="stgToggleMotion()" aria-label="Toggle reduce motion"><span class="stg-toggle-knob"></span></button>
+      </div>
+      <div class="stg-section-label">Tools &amp; Data</div>
+      <div class="stg-row stg-btn-row" onclick="stgRestartTour()">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">🧭</div>
+          <div><div class="stg-row-name">Restart Tour Guide</div><div class="stg-row-sub">Walk through all app features</div></div>
+        </div>
+        <span class="stg-chevron">›</span>
+      </div>
+      <div class="stg-row stg-btn-row" onclick="printCurrent();closeSettings()">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">🖨️</div>
+          <div><div class="stg-row-name">Print / Save as PDF</div><div class="stg-row-sub">Export current view</div></div>
+        </div>
+        <span class="stg-chevron">›</span>
+      </div>
+      <div class="stg-row stg-btn-row stg-danger-row" onclick="stgResetAll()">
+        <div class="stg-row-left">
+          <div class="stg-row-icon">🔄</div>
+          <div><div class="stg-row-name">Reset All Settings</div><div class="stg-row-sub">Restore defaults</div></div>
+        </div>
+        <span class="stg-chevron">›</span>
+      </div>
+      <div style="text-align:center;padding:20px 0 8px;font-size:10px;color:#334155;font-family:'Fira Code',monospace;letter-spacing:0.8px;">
+        The Triad · v3.1 · Evidence-Based Clinical Reference
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PASSWORD GATE ═════════════════════════════════════════════ -->
+<div id="pwd-gate">
+  <div id="pwd-box">
+    <div id="pwd-logo"><div style="width:64px;height:64px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><defs><radialGradient id="bgf" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></radialGradient><filter id="glf"><feGaussianBlur stdDeviation="0.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="28" cy="28" r="28" fill="url(#bgf)"/><circle cx="28" cy="28" r="25.5" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4"/><line x1="28" y1="6.5" x2="47.5" y2="38" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round"/><line x1="47.5" y1="38" x2="8.5" y2="38" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round"/><line x1="8.5" y1="38" x2="28" y2="6.5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="6.5" r="3.2" fill="#0ea5e9" filter="url(#glf)"/><circle cx="47.5" cy="38" r="3.2" fill="#a855f7" filter="url(#glf)"/><circle cx="8.5" cy="38" r="3.2" fill="#ef4444" filter="url(#glf)"/><polyline points="13,24 16.5,24 19,16.5 21.5,30 24,20 26.5,24 29.5,24 32.5,13 35,29 37.5,24 41,24" fill="none" stroke="#f0f9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" filter="url(#glf)"/><circle cx="28" cy="24" r="2" fill="white" opacity="0.85"/></svg></div></div>
+    <div id="pwd-title">The Triad</div>
+    <div id="pwd-sub">HTN · Hypotension · Diabetes · Sepsis · Paediatrics · Renal <span style="font-size:10px;color:#475569">v3.1</span><br><span style="color:#475569;font-size:11px">© Gbenga Adejuyigbe, RN, BNSc · 2026</span></div>
+
+    <div style="background:#1e3a5f;border:1px solid #1d4ed8;border-radius:10px;padding:14px 16px;margin-bottom:18px;text-align:left">
+      <div style="font-size:11px;font-weight:700;color:#93c5fd;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px">⚕️ Professional Use Only</div>
+      <div style="font-size:12px;color:#cbd5e1;line-height:1.7">
+        This tool is a <strong style="color:#f0f9ff">clinical decision-support reference</strong> based on ESC/ESH 2023, ADA 2024, KDIGO 2024, and SSC guidelines.<br><br>
+        It does <strong style="color:#fca5a5">not</strong> constitute medical advice, does not replace clinical judgment, and has not been certified as a medical device.<br><br>
+        By continuing, you confirm you are a <strong style="color:#f0f9ff">licensed or supervised healthcare professional</strong> using this tool for reference purposes only.
+      </div>
+    </div>
+
+    <button id="pwd-btn" onclick="acknowledgeAndEnter()">✅ I Understand — Enter The Triad</button>
+    <button id="pwd-no-btn" onclick="declinePwd()" style="width:100%;margin-top:10px;padding:11px;background:transparent;color:#64748b;border:1px solid #334155;border-radius:10px;font-size:13px;cursor:pointer;">I am not a Healthcare Professional</button>
+    <div id="pwd-credit">Clinical reference tool · For licensed healthcare professionals only</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS — load order matters:
+     1. data       → static constants, all data arrays
+     2. utils      → pure functions (classifyBP, DOM helpers, etc.)
+     3. state      → app state S, session bridges, print functions
+     4. tabs/*     → tab content renderers (depend on utils + state)
+     5. navigation → routing, search, rendering (depends on tabs)
+     6. app        → unlock gate, settings, clock, scroll progress
+     7. onboarding → tour (depends on full app being ready)
+     8. pwa        → service worker, install banner
+     ═══════════════════════════════════════════════════════════ -->
+
+<!-- 1. Data -->
+<script src="/app/data.js"></script>
+
+<!-- 2. Utilities -->
+<script src="/app/utils.js"></script>
+
+<!-- 3. Icons -->
+<script src="/app/icons.js"></script>
+
+<!-- 4. State & session -->
+<script src="/app/state.js"></script>
+
+<!-- 5. Tab content -->
+<script src="/app/tabs/drugs.js"></script>
+<script src="/app/tabs/drugs-extended.js"></script>
+<script src="/app/tabs/drugs-expanded.js"></script>
+<script src="/app/tabs/sepsis.js"></script>
+<script src="/app/tabs/paediatrics.js"></script>
+<script src="/app/tabs/renal.js"></script>
+<script src="/app/tabs/diabetes.js"></script>
+<script src="/app/tabs/htn.js"></script>
+<script src="/app/tabs/hypotension.js"></script>
+<script src="/app/tabs/anc.js"></script>
+<script src="/app/tabs/combined.js"></script>
+
+<!-- 6. Navigation & rendering -->
+<script src="/app/tabs/drugs-additions.js"></script>
+<script src="/app/navigation.js"></script>
+
+<!-- 7. App shell (unlock gate, settings panel, clock, scroll bar) -->
+<script src="/app/app.js"></script>
+
+<!-- 8. Onboarding tour -->
+<script src="/app/onboarding.js"></script>
+
+<!-- 9. PWA -->
+<script src="/app/service-worker-registration.js"></script>
+
+<!-- Artery visualizer (standalone, no dependencies) -->
+<script src="/app/artery-visualizer.js"></script>
+
+</body>
+</html>
